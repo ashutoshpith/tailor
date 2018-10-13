@@ -15,6 +15,9 @@ class RepairsController < ApplicationController
   # GET /repairs/new
   def new
     @repair = Repair.new
+    @company_id 
+    @c=Company.all
+    
   end
 
   # GET /repairs/1/edit

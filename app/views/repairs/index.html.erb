@@ -16,8 +16,8 @@
   <tbody>
     <% @repairs.each do |repair| %>
       <tr>
-        <td><%= repair.model %></td>
-        <td><%= repair.problem %></td>
+        <td><%= repair.model.name %></td>
+        <td><%= repair.problem.issue %></td>
         <td><%= repair.other %></td>
         <td><%= repair.pick_date %></td>
         <td><%= link_to 'Show', repair %></td>
