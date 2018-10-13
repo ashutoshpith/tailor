@@ -1,27 +1,14 @@
-<%= form_with(model: repair_problem, local: true) do |form| %>
-  <% if repair_problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(repair_problem.errors.count, "error") %> prohibited this repair_problem from being saved:</h2>
 
-      <ul>
-      <% repair_problem.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= simple_form_for(@repair_problem) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="field">
-    <%= form.label :repair_id %>
-    <%= form.text_field :repair_id %>
+  <div class="form-inputs">
+    <%= f.association :repair %>
+    <%= f.association :problem %>
   </div>
 
-  <div class="field">
-    <%= form.label :problem_id %>
-    <%= form.text_field :problem_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-actions">
+    <%= f.button :submit %>
   </div>
 <% end %>
